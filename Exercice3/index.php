@@ -2,7 +2,7 @@
 
 $bdd = new PDO('mysql:host=localhost;dbname=sql_colyseum;charset=utf8', 'root', '');
 
-$response = $bdd->query('SELECT `firstname`, `lastname` FROM `clients` ORDER BY `lastName` ASC LIMIT 20');
+$response = $bdd->query('SELECT `firstName`, `lastName` FROM `clients` ORDER BY `lastName` ASC LIMIT 20');
 $customers = $response->fetchAll(PDO::FETCH_OBJ);
     // Fetch permet de parcourir le résultat de la requête ligne par ligne tandis que fetchAll() renvoie toutes les lignes sous forme de tableau et le mode PDO::FETCH_OBJ permet mon tableau en objet
 
@@ -31,13 +31,22 @@ $customers = $response->fetchAll(PDO::FETCH_OBJ);
 
 <p>Voici la liste de l'ensemble de nos clients !</p>
 
-<!--On affiche chaque entrée une à une-->
 
-    <?php foreach ($customers as $key => $value) { // pour parcourir mon tableau d'informations transformer en objet?> 
+<div class="container">
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+             </tr>
+            <?php foreach($customers as $key => $value) { ?>
+            <tr>
+                <td><?= $value->lastName ?> </td>
+                <td><?= $value->firstName ?> </td>
+            </tr>
+            <?php } ?>
+        </table>
 
-        <?= $value->lastName ?> <?= $value->firstName ?> <br>
 
-    <?php } ?>
 
 </div>
 

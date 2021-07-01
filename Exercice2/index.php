@@ -29,28 +29,38 @@ $showStyle = $type->fetchAll(PDO::FETCH_OBJ);
     <p text-center> Afficher tous les types de spectacles possibles.</p>
 
 </div>
+
 <div class="container text-center mt-4">
 
-<p> Les différents types de spectacles sont :</p>
-
-
 <!--pour parcourir mon tableau d'informations transformer en objet-->
-    <table class="">
-        <tr> 
-            <th>Liste des spectacles</th>
-        </tr>   
-        <tr>
-        <?php foreach ($showStyle as $key => $value) { ?>
-            <td>
-            <?= $value->type;
-            ?>
-            </td>
-        </tr>
-    </table>
-<?php
-} ?>
 
+<table class="table table-striped">
+    <tr>
+        <th scope="col">Genre des spectacles disponibles</th>
+    </tr>
+    <?php foreach ($showStyle as $key => $value) { ?>
+    <tr>
+        <td><?= $value->type; ?></td>
+    </tr>
+    <?php } ?>  
+</table>
 </div>
+
+<!--Work For Fun -->
+
+
+
+<div class="container">
+<p> Essai d'insertion d'un menu déroulant</p>
+<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  <option selected>Choisissez un genre de spectacle</option>
+  <?php foreach ($showStyle as $key => $value) { ?>
+  <option value="<?= $value->type; ?>"><?= $value->type; ?></option>
+<?php } ?>
+</select>
+</div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
