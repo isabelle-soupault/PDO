@@ -1,7 +1,7 @@
 <?php
 
 require 'class/db.php';
-//require 'model/clients.php';
+require 'model/clients.php';
 require 'model/shows.php';
 require 'controller/indexCtrl.php';
 
@@ -65,7 +65,7 @@ require 'controller/indexCtrl.php';
             foreach ($showsList as $show) {
             ?>
     <tr>
-    <td><?= $show->genreID ?></td>        
+    <td><?= $show->showtypes ?></td>        
     </tr>
     <?php }
                 ?>
@@ -73,7 +73,7 @@ require 'controller/indexCtrl.php';
 
 
 
-    <!--<table>
+    <table>
         <caption>Exercice 1 - Liste des clients</caption>
         <tbody>
             <tr>
@@ -99,7 +99,22 @@ require 'controller/indexCtrl.php';
             }
             ?>
         </tbody>
-    </table>-->
+    </table>
 </body>
 
 </html>
+
+
+
+<!------------------------------------------------------->
+<!--                  Correction Exo2                     -->
+<!------------------------------------------------------->
+
+<!--
+
+Ici, on va créer un nouveau fichier nommé config.php car comme on a déjà instancié la DB, il n'est pas possible de le refaire une seconde fois.
+
+La meilleur façon, est de tout mettre au même endroit dans un fichier config.php
+
+
+-->

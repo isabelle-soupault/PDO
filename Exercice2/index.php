@@ -52,7 +52,7 @@ $showStyle = $type->fetchAll(PDO::FETCH_OBJ);
 
 <div class="container">
 <p> Essai d'insertion d'un menu déroulant</p>
-<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="showTypes">
   <option selected>Choisissez un genre de spectacle</option>
   <?php foreach ($showStyle as $key => $value) { ?>
   <option value="<?= $value->type; ?>"><?= $value->type; ?></option>

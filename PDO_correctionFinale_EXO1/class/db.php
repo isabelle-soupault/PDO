@@ -24,3 +24,4 @@ class db
 		return $db;
 	}
 }
+

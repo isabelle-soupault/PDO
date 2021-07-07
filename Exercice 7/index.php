@@ -4,8 +4,12 @@ $bdd = new PDO('mysql:host=localhost;dbname=sql_colyseum;charset=utf8', 'root', 
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 
-$type = $bdd->query('SELECT `lastName`, `firstName`, DATE_FORMAT(`birthDate`,"%d/%m/%Y") AS `DateOfBirth`, `card`, `cardNumber`
-FROM `clients`');
+$type = $bdd->query('SELECT `id`, UPPER(`lastName`) AS `lastName`, `firstName`, DATE_FORMAT(`birthDate`,\'%d/%m/%Y\') AS `birthDate`, `cardNumber`,
+CASE WHEN `card` = 1 THEN "Oui"
+    ELSE "Non"
+END AS `cardExist`
+FROM `clients`;
+');
 $showStyle = $type->fetchAll(PDO::FETCH_OBJ);
 ?>
 
@@ -57,17 +61,8 @@ Numéro de carte : Numéro de la carte fidélité du client s'il en possède une
         <tr>
             <td><?= $value->firstName ?></td>
             <td><?= $value->lastName ?></td>
-            <td><?= $value->DateOfBirth ?></td>
-            <td><?php 
-                    if ($value->card == 0){ ?>
-                        NON <br>
-
-                    <?php } else { ?>   
-                        OUI <br>
-
-                    <?php
-                    }
-                    ?></td>
+            <td><?= $value->birthDate ?></td>
+            <td><?= $value->cardExist ?></td>
             <td><?= $value->cardNumber;?></td>    
         </tr>
         <?php  } ?>
